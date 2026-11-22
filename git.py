@@ -1,2 +1,2 @@
 print("Hola MITYA")
-puto
+puto la jodia tarea 
