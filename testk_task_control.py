@@ -2,7 +2,7 @@ import unittest
 import gestion_de_tareas as main
 class TestTaskControl(unittest.TestCase):
 
-    def setUp(self):
+    def setUp(self):   
         main.tareas.clear()
         main.siguiente_id = 1
 

@@ -1,4 +1,3 @@
-
 class Tarea:
     def __init__(self, id, titulo, descripcion=""):
         self.id = id
@@ -39,4 +38,26 @@ def cambiar_estado(id_tarea, estado):
         return False
 
     tarea.completada = estado
+    return True
+
+
+def mostrar_tareas():
+    if not tareas:
+        print("No hay tareas registradas.")
+        return
+
+    for tarea in tareas:
+        estado = "Completada" if tarea.completada else "Pendiente"
+
+        print(f"ID: {tarea.id}")
+        print(f"Titulo: {tarea.titulo}")
+        print(f"Descripcion: {tarea.descripcion}")
+        print(f"Estado: {estado}")
+        print("----------------------")
+
+def elimina_tarea(id_tarea):
+    tarea = buscar_tarea(id_tarea)
+    if tarea is None:
+        return False
+    tareas.remove(tarea)
     return True
