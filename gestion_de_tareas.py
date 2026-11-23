@@ -1,18 +1,42 @@
+
 class Tarea:
-    def __init__(self, id, titulo, descripcion= ""):
-     self.id = id
-     self.titulo = titulo
-     self. descripcion = descripcion
-     self.completada = False 
+    def __init__(self, id, titulo, descripcion=""):
+        self.id = id
+        self.titulo = titulo
+        self.descripcion = descripcion
+        self.completada = False
 
-    tarea = []
-    siguiente_id = 1 
 
-    def registar_tarea(titulo, descripcion=""):
-       global siguiente_id
-       if not titulo.strip():
+tareas = []
+siguiente_id = 1
+
+
+def registrar_tarea(titulo, descripcion=""):
+    global siguiente_id
+
+    if not titulo.strip():
         return False
-       tarea = Tarea(siguiente_id, titulo, descripcion)
-       tarea.append(tarea)
-       siguiente_id += 1
-       return True
+
+    nueva_tarea = Tarea(siguiente_id, titulo, descripcion)
+    tareas.append(nueva_tarea)
+    siguiente_id += 1
+
+    return True
+
+
+def buscar_tarea(id_tarea):
+    for tarea in tareas:
+        if tarea.id == id_tarea:
+            return tarea
+
+    return None
+
+
+def cambiar_estado(id_tarea, estado):
+    tarea = buscar_tarea(id_tarea)
+
+    if tarea is None:
+        return False
+
+    tarea.completada = estado
+    return True
